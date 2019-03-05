@@ -1,7 +1,8 @@
-package com.google.codechallengeandroid
+package com.google.codechallengeandroid.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.google.codechallengeandroid.R
 
 class MainActivity : AppCompatActivity() {
 

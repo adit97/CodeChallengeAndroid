@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item android:drawable="@color/colorWhite"/>-->
+    <item android:drawable="@color/colorWhite" />
+
+    <item
+        android:drawable="@drawable/binar_logo"
+        android:top="272dp"
+        android:bottom="272dp"
+        android:right="128dp"
+        android:left="128dp" />
+
+</layer-list>

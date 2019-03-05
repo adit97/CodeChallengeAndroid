@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Code Challenge Android</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="welcome_to_binar_app">Welcome to binar app</string>
+    <string name="your_password">Your password</string>
+    <string name="your_email">Your email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="password">Password</string>
+    <string name="university_organization">University/Organization</string>
+    <string name="email_address">Email Address</string>
+    <string name="full_name">Full name</string>
 </resources>
