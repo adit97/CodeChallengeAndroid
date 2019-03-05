@@ -3,6 +3,7 @@ package com.google.codechallengeandroid.activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.google.codechallengeandroid.R
 import com.google.codechallengeandroid.util.BinarApp
 import kotlinx.android.synthetic.main.activity_login.*
@@ -28,10 +29,15 @@ class LoginActivity : AppCompatActivity() {
             val emailAddress = etEmailAddressLogin.text.toString()
             val password = etPasswordLogin.text.toString()
 
+            Log.d("akus", emailAddress)
+            Log.d("akus", password)
 
+            Log.d("akus", BinarApp.sp.emailAddress)
+            Log.d("akus", BinarApp.sp.password)
             if(emailAddress == BinarApp.sp.emailAddress && password == BinarApp.sp.password){
-                btnLoginUser.setOnClickListener { startActivity(Intent(this, MainActivity
-                ::class.java)) }
+                BinarApp.sp.login = true
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
             }
         }
     }

@@ -14,14 +14,6 @@ class PreferenceHelper(app: Application) {
         sp.edit()
     }
 
-    fun putString(key: String, value: String) {
-        spe.putString(key, value).apply()
-    }
-
-    fun getString(key: String): String {
-        return sp.getString(key, "") ?: ""
-    }
-
     fun logout() {
         spe.clear().apply()
     }
@@ -41,5 +33,9 @@ class PreferenceHelper(app: Application) {
     var password: String
         set(value) = spe.putString(Constant.PASSWORD, value).apply()
         get() = sp.getString(Constant.PASSWORD, "")?:""
+
+    var login: Boolean
+        set(value) = spe.putBoolean(Constant.IS_LOGIN, value).apply()
+        get() = sp.getBoolean(Constant.IS_LOGIN, false)
 
 }

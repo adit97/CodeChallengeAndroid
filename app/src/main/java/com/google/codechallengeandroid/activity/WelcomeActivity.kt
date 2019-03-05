@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.google.codechallengeandroid.R
+import com.google.codechallengeandroid.util.BinarApp
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
@@ -16,8 +17,16 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        checkLogin()
         openLogin()
         openRegister()
+    }
+
+    private fun checkLogin() {
+        if (BinarApp.sp.login) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
     }
 
     private fun openRegister() {
