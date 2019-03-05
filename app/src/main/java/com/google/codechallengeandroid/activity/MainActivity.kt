@@ -11,12 +11,14 @@ import com.google.codechallengeandroid.R
 import com.google.codechallengeandroid.adapter.AndroidAdapter
 import com.google.codechallengeandroid.model.AndroidModel
 import com.google.codechallengeandroid.util.BinarApp
+import com.google.codechallengeandroid.util.toast
+import com.google.codechallengeandroid.util.toastAndroid
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private val androidList = mutableListOf<AndroidModel>()
-    private val androidAdapter = AndroidAdapter(androidList)
+    private val androidAdapter = AndroidAdapter(androidList, this::onItemClick)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,8 +41,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getAndroidModel() {
-        (1..20).forEach {
-            val androidModel = AndroidModel("siswa $it", "siswa$it@siswa.com", "api $it")
+        val androidName = listOf("Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo", "Pie")
+
+        (0..6).forEach {
+            val androidModel = AndroidModel(androidName[it], "android $it", "api $it")
             androidList.add(androidModel)
         }
     }
@@ -65,5 +69,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun onItemClick(it: AndroidModel) {
+        this.toastAndroid(it.androidName)
     }
 }

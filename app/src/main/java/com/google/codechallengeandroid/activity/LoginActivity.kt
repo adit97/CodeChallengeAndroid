@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.google.codechallengeandroid.R
 import com.google.codechallengeandroid.util.BinarApp
+import com.google.codechallengeandroid.util.toast
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_welcome.*
@@ -28,17 +29,20 @@ class LoginActivity : AppCompatActivity() {
         btnLoginUser.setOnClickListener {
             val emailAddress = etEmailAddressLogin.text.toString()
             val password = etPasswordLogin.text.toString()
-
-            Log.d("akus", emailAddress)
-            Log.d("akus", password)
-
-            Log.d("akus", BinarApp.sp.emailAddress)
-            Log.d("akus", BinarApp.sp.password)
-            if(emailAddress == BinarApp.sp.emailAddress && password == BinarApp.sp.password){
-                BinarApp.sp.login = true
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
+            if(emailAddress != "" && password != "") {
+                if(emailAddress == BinarApp.sp.emailAddress && password == BinarApp.sp.password){
+                    BinarApp.sp.login = true
+                    this.toast("Login berhasil")
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    this.toast("Email dan password anda salah")
+                }
+            }else{
+                this.toast("Email dan Password tidak bolek kosong")
             }
+
         }
     }
 

@@ -8,7 +8,10 @@ import com.google.codechallengeandroid.R
 import com.google.codechallengeandroid.model.AndroidModel
 import kotlinx.android.synthetic.main.item_android.view.*
 
-class AndroidAdapter(private val androidList: List<AndroidModel>) : RecyclerView.Adapter<AndroidAdapter.MyHolder>(){
+class AndroidAdapter(private val androidList: List<AndroidModel>,
+                     private val onClick: (androidModel: AndroidModel) -> Unit
+
+) : RecyclerView.Adapter<AndroidAdapter.MyHolder>(){
     override fun onCreateViewHolder(viewGroup: ViewGroup, position: Int): AndroidAdapter.MyHolder {
         val layoutInflater = LayoutInflater.from(viewGroup.context)
         val view: View = layoutInflater.inflate(R.layout.item_android, viewGroup, false)
@@ -22,6 +25,11 @@ class AndroidAdapter(private val androidList: List<AndroidModel>) : RecyclerView
         val androidModel: AndroidModel = androidList[position]
 
         myHolder.bind(androidModel)
+        myHolder.itemView.run {
+            setOnClickListener {
+                onClick(androidModel)
+            }
+        }
     }
 
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

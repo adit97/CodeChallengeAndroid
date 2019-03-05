@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.codechallengeandroid.R
 import com.google.codechallengeandroid.util.BinarApp
+import com.google.codechallengeandroid.util.toast
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -30,14 +31,24 @@ class RegisterActivity : AppCompatActivity() {
             val password = etPassword.text.toString()
             val confirmPassword = etConfirmPassword.text.toString()
 
-            BinarApp.sp.fullName = fullName
-            BinarApp.sp.emailAddress = emailAddress
-            BinarApp.sp.universityOrOrganization =universityOrOrganization
-            BinarApp.sp.password = password
+            if(fullName != "" && emailAddress != "" && universityOrOrganization != "" && password != "" && confirmPassword != "") {
+                if(password == confirmPassword) {
+                    BinarApp.sp.fullName = fullName
+                    BinarApp.sp.emailAddress = emailAddress
+                    BinarApp.sp.universityOrOrganization =universityOrOrganization
+                    BinarApp.sp.password = password
 
-            Toast.makeText(this, "Register berhasil", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+                    Toast.makeText(this, "Register berhasil", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                }else{
+                    this.toast("Password dan confirm password harus sama")
+                }
+            }else {
+                this.toast("Tidak boleh kosong")
+            }
+
+
         }
     }
 
