@@ -41,10 +41,62 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getAndroidModel() {
-        val androidName = listOf("Jelly Bean", "KitKat", "Lollipop", "Marshmallow", "Nougat", "Oreo", "Pie")
+        val androidName = listOf(
+            "Petit Four",
+            "Cupcake",
+            "Donut",
+            "Eclair",
+            "Froyo",
+            "Gingerbread",
+            "Honeycomb",
+            "Ice Cream Sandwich",
+            "Jelly Bean",
+            "KitKat",
+            "Lollipop",
+            "Marshmallow",
+            "Nougat",
+            "Oreo",
+            "Pie"
+        )
 
-        (0..6).forEach {
-            val androidModel = AndroidModel(androidName[it], "android $it", "api $it")
+        val androidVersion = listOf(
+            "1.1",
+            "1.5",
+            "1.6",
+            "2.0 – 2.1",
+            "2.2 – 2.2.3",
+            "2.3 – 2.3.7",
+            "3.0 – 3.2.6",
+            "4.0 – 4.0.4",
+            "4.1 – 4.3.1",
+            "4.4 – 4.4.4",
+            "5.0 – 5.1.1",
+            "6.0 – 6.0.1",
+            "7.0 – 7.1.2",
+            "8.0 – 8.1",
+            "9.0"
+        )
+
+        val androidApiLevel = listOf(
+            "2",
+            "3",
+            "4",
+            "5-7",
+            "8",
+            "9-10",
+            "11-13",
+            "14-15",
+            "16-18",
+            "19-20",
+            "21-22",
+            "23",
+            "24-25",
+            "26-27",
+            "28"
+        )
+
+        (0..14).forEach {
+            val androidModel = AndroidModel(androidName[it], androidVersion[it],  androidApiLevel[it])
             androidList.add(androidModel)
         }
     }
@@ -61,9 +113,10 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val id = item!!.itemId
 
-        if(id == R.id.btnLogout) {
+        if (id == R.id.btnLogout) {
             BinarApp.sp.logout()
             startActivity(Intent(this, WelcomeActivity::class.java))
+            this.toast("Berhasil Logout")
             finish()
             return true
         }
